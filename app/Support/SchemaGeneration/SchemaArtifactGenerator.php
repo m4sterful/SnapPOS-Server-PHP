@@ -196,6 +196,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Schema;
 
 class GeneratedLocalSchemaSeeder extends Seeder
 {
@@ -206,18 +207,24 @@ class GeneratedLocalSchemaSeeder extends Seeder
 
     public function run(): void
     {
-        foreach (\$this->seeds as \$seed) {
-            \$definition = \$seed['definition'];
-            \$table = \$definition['table_name'];
-            \$mode = \$definition['mode'];
-            \$rows = array_map(fn (array \$row): array => \$this->resolveRow(\$row), \$definition['rows']);
+        Schema::disableForeignKeyConstraints();
 
-            match (\$mode) {
-                'ensure_missing_rows' => \$this->ensureMissingRows(\$table, \$definition, \$rows),
-                'patch_existing_when_empty' => \$this->patchExistingWhenEmpty(\$table, \$definition, \$rows),
-                'insert_all_if_table_empty' => \$this->insertAllIfTableEmpty(\$table, \$rows),
-                default => throw new \RuntimeException('Unsupported generated seed mode: '.\$mode),
-            };
+        try {
+            foreach (\$this->seeds as \$seed) {
+                \$definition = \$seed['definition'];
+                \$table = \$definition['table_name'];
+                \$mode = \$definition['mode'];
+                \$rows = array_map(fn (array \$row): array => \$this->resolveRow(\$row), \$definition['rows']);
+
+                match (\$mode) {
+                    'ensure_missing_rows' => \$this->ensureMissingRows(\$table, \$definition, \$rows),
+                    'patch_existing_when_empty' => \$this->patchExistingWhenEmpty(\$table, \$definition, \$rows),
+                    'insert_all_if_table_empty' => \$this->insertAllIfTableEmpty(\$table, \$rows),
+                    default => throw new \RuntimeException('Unsupported generated seed mode: '.\$mode),
+                };
+            }
+        } finally {
+            Schema::enableForeignKeyConstraints();
         }
     }
 
@@ -322,6 +329,9 @@ PHP;
             $type === 'TEXT' => "\$table->text('{$name}')",
             $type === 'DATE' => "\$table->date('{$name}')",
             $type === 'DATETIME' => "\$table->dateTime('{$name}')",
+            $type === 'FLOAT' => "\$table->float('{$name}')",
+            $type === 'DOUBLE' => "\$table->double('{$name}')",
+            $type === 'REAL' => "\$table->double('{$name}')",
             Str::startsWith($type, 'VARCHAR(') => "\$table->string('{$name}', {$this->extractLength($type)})",
             Str::startsWith($type, 'CHAR(') => "\$table->char('{$name}', {$this->extractLength($type)})",
             Str::startsWith($type, 'DECIMAL(') => sprintf("\$table->decimal('%s', %s, %s)", $name, ...$this->extractPrecision($type)),

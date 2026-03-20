@@ -11,6 +11,9 @@ return new class extends Migration
     {
             Schema::create('userroles', function (Blueprint $table): void {
                 $table->id();
+                $table->text('name')->nullable();
+                $table->index(['name'], 'idx_userroles_name');
+                $table->unique(['name'], 'uq_userroles_name');
             });
     }
 

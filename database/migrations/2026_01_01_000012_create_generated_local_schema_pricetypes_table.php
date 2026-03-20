@@ -11,6 +11,9 @@ return new class extends Migration
     {
             Schema::create('pricetypes', function (Blueprint $table): void {
                 $table->id();
+                $table->text('name')->nullable();
+                $table->text('description')->nullable();
+                $table->index(['name'], 'idx_priceTypes_name');
             });
     }
 

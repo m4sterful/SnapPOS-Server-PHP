@@ -11,6 +11,10 @@ return new class extends Migration
     {
             Schema::create('sys', function (Blueprint $table): void {
                 $table->id();
+                $table->text('name')->nullable();
+                $table->text('value');
+                $table->index(['name'], 'idx_sys_name');
+                $table->unique(['name'], 'uq_sys_name');
             });
     }
 

@@ -76,6 +76,7 @@ class SetupController extends Controller
             'APP_NAME' => (string) $request->string('app_name'),
             'APP_URL' => (string) $request->string('app_url'),
             'APP_ENV' => (string) $request->string('app_env'),
+            'APP_KEY' => $this->generateApplicationKey(),
             'APP_DEBUG' => 'false',
             'DB_CONNECTION' => (string) $request->string('db_connection'),
             'DB_HOST' => $request->string('db_connection')->value() === 'sqlite' ? '' : (string) $request->string('db_host'),
@@ -101,8 +102,6 @@ class SetupController extends Controller
         }
 
         try {
-            $this->environmentFileManager->write($values);
-            Artisan::call('key:generate', ['--force' => true]);
             Artisan::call('config:clear');
             $this->applyRuntimeConfiguration($values);
             Artisan::call('migrate', ['--force' => true]);
@@ -110,6 +109,8 @@ class SetupController extends Controller
             if ($request->boolean('seed_database')) {
                 Artisan::call('db:seed', ['--class' => 'Database\\Seeders\\GeneratedLocalSchemaSeeder', '--force' => true]);
             }
+
+            $this->queueEnvironmentPersistence($values);
         } catch (Throwable $throwable) {
             return response()->json([
                 'message' => 'Application setup failed after connecting successfully.',
@@ -137,6 +138,7 @@ class SetupController extends Controller
 
         Config::set('app.name', $values['APP_NAME']);
         Config::set('app.url', $values['APP_URL']);
+        Config::set('app.key', $values['APP_KEY']);
         Config::set('database.default', $values['DB_CONNECTION']);
 
         Config::set('database.connections.sqlite.database', $values['DB_DATABASE']);
@@ -151,6 +153,21 @@ class SetupController extends Controller
 
         DB::purge($values['DB_CONNECTION']);
         DB::setDefaultConnection($values['DB_CONNECTION']);
+    }
+
+    /**
+     * @param  array<string, string>  $values
+     */
+    protected function queueEnvironmentPersistence(array $values): void
+    {
+        app()->terminating(function () use ($values): void {
+            $this->environmentFileManager->write($values);
+        });
+    }
+
+    protected function generateApplicationKey(): string
+    {
+        return 'base64:'.base64_encode(random_bytes(32));
     }
 
     protected function assertDatabaseConnectionIsValid(string $connection): void

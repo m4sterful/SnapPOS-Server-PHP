@@ -65,4 +65,28 @@ class SetupRoutingTest extends TestCase
                 'status' => 'stub',
             ]);
     }
+
+    public function test_system_endpoint_returns_plain_text_pong_for_get_requests(): void
+    {
+        $status = Mockery::mock(InstallationStatus::class, [app(EnvironmentFileManager::class)]);
+        $status->shouldReceive('installed')->andReturnTrue();
+        $this->app->instance(InstallationStatus::class, $status);
+
+        $this->get('/api/system')
+            ->assertOk()
+            ->assertSeeText('pong')
+            ->assertHeader('content-type', 'text/plain; charset=UTF-8');
+    }
+
+    public function test_system_endpoint_returns_plain_text_pong_for_non_get_requests(): void
+    {
+        $status = Mockery::mock(InstallationStatus::class, [app(EnvironmentFileManager::class)]);
+        $status->shouldReceive('installed')->andReturnTrue();
+        $this->app->instance(InstallationStatus::class, $status);
+
+        $this->post('/api/system')
+            ->assertOk()
+            ->assertSeeText('pong')
+            ->assertHeader('content-type', 'text/plain; charset=UTF-8');
+    }
 }

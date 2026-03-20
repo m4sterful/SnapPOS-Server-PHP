@@ -11,6 +11,9 @@ return new class extends Migration
     {
             Schema::create('tax', function (Blueprint $table): void {
                 $table->id();
+                $table->text('tax_type')->nullable();
+                $table->text('description')->nullable();
+                $table->float('rate')->nullable();
             });
     }
 

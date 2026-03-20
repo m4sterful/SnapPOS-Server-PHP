@@ -7,7 +7,11 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('setup.complete')->group(function (): void {
     Route::get('/', ApplicationStatusController::class)->name('home');
 
-    foreach (['admin', 'marketing', 'purchasing', 'delivery', 'reporting', 'inventory', 'warehouse', 'operations', 'system'] as $module) {
+    Route::any('system', ModuleController::class)
+        ->defaults('module', 'system')
+        ->name('modules.system');
+
+    foreach (['admin', 'marketing', 'purchasing', 'delivery', 'reporting', 'inventory', 'warehouse', 'operations'] as $module) {
         Route::get($module, ModuleController::class)
             ->defaults('module', $module)
             ->name("modules.{$module}");
