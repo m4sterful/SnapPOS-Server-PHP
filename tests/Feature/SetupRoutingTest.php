@@ -19,13 +19,50 @@ class SetupRoutingTest extends TestCase
             ->assertRedirect(route('setup.show'));
     }
 
-    public function test_setup_redirects_home_when_application_is_already_installed(): void
+    public function test_setup_page_is_available_when_application_is_not_installed(): void
+    {
+        $status = Mockery::mock(InstallationStatus::class, [app(EnvironmentFileManager::class)]);
+        $status->shouldReceive('installed')->andReturnFalse();
+        $status->shouldReceive('evaluate')->andReturn(['installed' => false, 'reasons' => []]);
+        $this->app->instance(InstallationStatus::class, $status);
+
+        $this->get('/setup')
+            ->assertOk()
+            ->assertSee('Install SnapPOS Server');
+    }
+
+    public function test_setup_page_is_not_available_after_installation(): void
     {
         $status = Mockery::mock(InstallationStatus::class, [app(EnvironmentFileManager::class)]);
         $status->shouldReceive('installed')->andReturnTrue();
         $this->app->instance(InstallationStatus::class, $status);
 
-        $this->get('/setup')
-            ->assertRedirect(route('home'));
+        $this->get('/setup')->assertNotFound();
+    }
+
+    public function test_api_root_requires_setup_when_application_is_not_installed(): void
+    {
+        $status = Mockery::mock(InstallationStatus::class, [app(EnvironmentFileManager::class)]);
+        $status->shouldReceive('installed')->andReturnFalse();
+        $this->app->instance(InstallationStatus::class, $status);
+
+        $this->getJson('/api')
+            ->assertStatus(409)
+            ->assertJsonPath('message', 'Application setup is required before API access is available.')
+            ->assertJsonPath('setup_url', route('setup.show'));
+    }
+
+    public function test_stub_module_endpoint_returns_json_when_application_is_installed(): void
+    {
+        $status = Mockery::mock(InstallationStatus::class, [app(EnvironmentFileManager::class)]);
+        $status->shouldReceive('installed')->andReturnTrue();
+        $this->app->instance(InstallationStatus::class, $status);
+
+        $this->getJson('/api/admin')
+            ->assertOk()
+            ->assertJson([
+                'module' => 'admin',
+                'status' => 'stub',
+            ]);
     }
 }

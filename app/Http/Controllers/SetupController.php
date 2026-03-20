@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Support\Setup\EnvironmentFileManager;
-use Illuminate\Http\RedirectResponse;
+use App\Support\Setup\InstallationStatus;
+use Illuminate\Database\DatabaseManager;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Config;
@@ -16,27 +18,29 @@ class SetupController extends Controller
 {
     public function __construct(private readonly EnvironmentFileManager $environmentFileManager) {}
 
-    public function show(): View
+    public function show(InstallationStatus $installationStatus): View
     {
+        $status = $installationStatus->evaluate();
+
         return view('setup', [
             'defaults' => [
-                'app_name' => old('app_name', env('APP_NAME', 'SnapPOS Server')),
-                'app_url' => old('app_url', env('APP_URL', 'http://localhost')),
-                'app_env' => old('app_env', env('APP_ENV', 'production')),
-                'db_connection' => old('db_connection', env('DB_CONNECTION', 'mysql')),
-                'db_host' => old('db_host', env('DB_HOST', '127.0.0.1')),
-                'db_port' => old('db_port', env('DB_PORT', '3306')),
-                'db_database' => old('db_database', env('DB_DATABASE', database_path('database.sqlite'))),
-                'db_username' => old('db_username', env('DB_USERNAME', '')),
-                'db_password' => old('db_password', env('DB_PASSWORD', '')),
-                'seed_database' => old('seed_database', false),
+                'app_name' => env('APP_NAME', 'SnapPOS Server'),
+                'app_url' => env('APP_URL', 'http://localhost'),
+                'app_env' => env('APP_ENV', 'production'),
+                'db_connection' => env('DB_CONNECTION', 'mysql'),
+                'db_host' => env('DB_HOST', '127.0.0.1'),
+                'db_port' => env('DB_PORT', '3306'),
+                'db_database' => env('DB_DATABASE', database_path('database.sqlite')),
+                'db_username' => env('DB_USERNAME', ''),
+                'db_password' => env('DB_PASSWORD', ''),
+                'seed_database' => false,
             ],
-            'errors' => session('setup_errors', []),
-            'status_message' => session('status_message'),
+            'errors' => $status['installed'] ? [] : $status['reasons'],
+            'status_message' => null,
         ]);
     }
 
-    public function store(Request $request): RedirectResponse
+    public function store(Request $request): JsonResponse
     {
         $validator = Validator::make($request->all(), [
             'app_name' => ['required', 'string', 'max:255'],
@@ -62,9 +66,10 @@ class SetupController extends Controller
         });
 
         if ($validator->fails()) {
-            return redirect()->route('setup.show')
-                ->withInput()
-                ->with('setup_errors', $validator->errors()->all());
+            return response()->json([
+                'message' => 'The setup payload is invalid.',
+                'errors' => $validator->errors(),
+            ], 422);
         }
 
         $values = [
@@ -81,27 +86,42 @@ class SetupController extends Controller
         ];
 
         try {
-            $this->environmentFileManager->write($values);
             $this->applyRuntimeConfiguration($values);
 
             if ($values['DB_CONNECTION'] === 'sqlite') {
                 $this->ensureSqliteDatabaseExists($values['DB_DATABASE']);
             }
 
+            $this->assertDatabaseConnectionIsValid($values['DB_CONNECTION']);
+        } catch (Throwable $throwable) {
+            return response()->json([
+                'message' => 'Database connection failed. Please review the setup values and try again.',
+                'errors' => [$throwable->getMessage()],
+            ], 422);
+        }
+
+        try {
+            $this->environmentFileManager->write($values);
             Artisan::call('key:generate', ['--force' => true]);
             Artisan::call('config:clear');
+            $this->applyRuntimeConfiguration($values);
             Artisan::call('migrate', ['--force' => true]);
 
             if ($request->boolean('seed_database')) {
                 Artisan::call('db:seed', ['--class' => 'Database\\Seeders\\GeneratedLocalSchemaSeeder', '--force' => true]);
             }
         } catch (Throwable $throwable) {
-            return redirect()->route('setup.show')
-                ->withInput()
-                ->with('setup_errors', [$throwable->getMessage()]);
+            return response()->json([
+                'message' => 'Application setup failed after connecting successfully.',
+                'errors' => [$throwable->getMessage()],
+            ], 500);
         }
 
-        return redirect()->route('home')->with('status_message', 'Installation completed successfully.');
+        return response()->json([
+            'message' => 'Installation completed successfully.',
+            'installed' => true,
+            'api_url' => route('home'),
+        ], 201);
     }
 
     /**
@@ -129,7 +149,13 @@ class SetupController extends Controller
             Config::set("database.connections.{$connection}.password", $values['DB_PASSWORD']);
         }
 
-        DB::purge();
+        DB::purge($values['DB_CONNECTION']);
+        DB::setDefaultConnection($values['DB_CONNECTION']);
+    }
+
+    protected function assertDatabaseConnectionIsValid(string $connection): void
+    {
+        app(DatabaseManager::class)->connection($connection)->getPdo();
     }
 
     protected function ensureSqliteDatabaseExists(string $databasePath): void
