@@ -1,0 +1,49 @@
+﻿{
+  "TableName": "contact_details",
+  "Columns": [
+    {
+      "Name": "guid",
+      "Type": "CHAR(36)",
+      "Nullable": false
+    },
+    {
+      "Name": "phone_number",
+      "Type": "TEXT",
+      "Nullable": true
+    },
+    {
+      "Name": "phone_type",
+      "Type": "TEXT",
+      "Nullable": true
+    }
+  ],
+  "Indexes": [
+    {
+      "Name": "idx_phone_numbers_guid",
+      "Columns": [
+        "guid"
+      ]
+    },
+    {
+      "Name": "idx_phone_numbers_type",
+      "Columns": [
+        "phone_type"
+      ]
+    }
+  ],
+  "UniqueIndexes": [],
+  "ForeignKeys": [
+    {
+      "Name": "fk_contact_details_guid",
+      "Columns": [
+        "guid"
+      ],
+      "ReferencedTable": "contacts",
+      "ReferencedColumns": [
+        "guid"
+      ],
+      "OnDelete": "CASCADE",
+      "OnUpdate": "CASCADE"
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "schemaFormatVersion": 1,
+  "tables": [
+    {
+      "tableName": "sys",
+      "file": "tables/sys.table.json",
+      "version": 1
+    },
+    {
+      "tableName": "example_table",
+      "file": "tables/example_table.table.json",
+      "version": 1
+    }
+  ],
+  "seeds": []
+}

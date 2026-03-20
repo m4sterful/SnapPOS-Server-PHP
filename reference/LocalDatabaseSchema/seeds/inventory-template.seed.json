@@ -1,0 +1,74 @@
+{
+  "TableName": "inventory_template",
+  "Mode": "ensure_missing_rows",
+  "MatchColumns": [
+    "guid"
+  ],
+  "PatchColumnsWhenEmpty": [],
+  "ZeroIsEmptyColumns": [],
+  "Rows": [
+    {
+      "Values": {
+        "guid": "aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaa1",
+        "product_name": "Metro Sofa",
+        "description": "Testing sofa for transfer flows.",
+        "ref_part_no": "SOFA-001",
+        "product_family": "Living Room",
+        "product_type": "Sofa",
+        "barcode": "100000000001",
+        "active": 1,
+        "allow_sales": 1,
+        "allow_por": 1,
+        "allow_oversale": 0,
+        "allow_delivery": 1,
+        "allow_finance": 1,
+        "serialize": 1,
+        "assembly_required": 0,
+        "discontinued": 0
+      },
+      "Lookups": []
+    },
+    {
+      "Values": {
+        "guid": "aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaa2",
+        "product_name": "Harbour Dining Table",
+        "description": "Testing dining table for warehouse shipments.",
+        "ref_part_no": "TABLE-002",
+        "product_family": "Dining",
+        "product_type": "Table",
+        "barcode": "100000000002",
+        "active": 1,
+        "allow_sales": 1,
+        "allow_por": 1,
+        "allow_oversale": 0,
+        "allow_delivery": 1,
+        "allow_finance": 1,
+        "serialize": 1,
+        "assembly_required": 1,
+        "discontinued": 0
+      },
+      "Lookups": []
+    },
+    {
+      "Values": {
+        "guid": "aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaa3",
+        "product_name": "Summit Accent Chair",
+        "description": "Testing chair for customer delivery flows.",
+        "ref_part_no": "CHAIR-003",
+        "product_family": "Living Room",
+        "product_type": "Chair",
+        "barcode": "100000000003",
+        "active": 1,
+        "allow_sales": 1,
+        "allow_por": 1,
+        "allow_oversale": 0,
+        "allow_delivery": 1,
+        "allow_finance": 1,
+        "serialize": 1,
+        "assembly_required": 0,
+        "discontinued": 0
+      },
+      "Lookups": []
+    }
+  ]
+}

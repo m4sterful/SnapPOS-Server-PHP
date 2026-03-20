@@ -1,0 +1,267 @@
+{
+  "TableName": "rolepermissions",
+  "Mode": "insert_all_if_table_empty",
+  "MatchColumns": [],
+  "PatchColumnsWhenEmpty": [],
+  "ZeroIsEmptyColumns": [],
+  "Rows": [
+    {
+      "Values": {
+        "role_id": 0,
+        "api_str": "GET /api/warehouse/locations"
+      },
+      "Lookups": [
+        {
+          "TargetColumn": "role_id",
+          "LookupTable": "userroles",
+          "LookupColumn": "name",
+          "SelectColumn": "id",
+          "LookupValue": "Warehouse",
+          "Required": true
+        }
+      ]
+    },
+    {
+      "Values": {
+        "role_id": 0,
+        "api_str": "GET /api/warehouse/orders"
+      },
+      "Lookups": [
+        {
+          "TargetColumn": "role_id",
+          "LookupTable": "userroles",
+          "LookupColumn": "name",
+          "SelectColumn": "id",
+          "LookupValue": "Warehouse",
+          "Required": true
+        }
+      ]
+    },
+    {
+      "Values": {
+        "role_id": 0,
+        "api_str": "GET /api/warehouse/orders/{id}"
+      },
+      "Lookups": [
+        {
+          "TargetColumn": "role_id",
+          "LookupTable": "userroles",
+          "LookupColumn": "name",
+          "SelectColumn": "id",
+          "LookupValue": "Warehouse",
+          "Required": true
+        }
+      ]
+    },
+    {
+      "Values": {
+        "role_id": 0,
+        "api_str": "POST /api/warehouse/orders/{id}/status"
+      },
+      "Lookups": [
+        {
+          "TargetColumn": "role_id",
+          "LookupTable": "userroles",
+          "LookupColumn": "name",
+          "SelectColumn": "id",
+          "LookupValue": "Warehouse",
+          "Required": true
+        }
+      ]
+    },
+
+    {
+      "Values": {
+        "role_id": 0,
+        "api_str": "GET /api/warehouse/locations"
+      },
+      "Lookups": [
+        {
+          "TargetColumn": "role_id",
+          "LookupTable": "userroles",
+          "LookupColumn": "name",
+          "SelectColumn": "id",
+          "LookupValue": "Warehouse Admin",
+          "Required": true
+        }
+      ]
+    },
+    {
+      "Values": {
+        "role_id": 0,
+        "api_str": "GET /api/warehouse/orders"
+      },
+      "Lookups": [
+        {
+          "TargetColumn": "role_id",
+          "LookupTable": "userroles",
+          "LookupColumn": "name",
+          "SelectColumn": "id",
+          "LookupValue": "Warehouse Admin",
+          "Required": true
+        }
+      ]
+    },
+    {
+      "Values": {
+        "role_id": 0,
+        "api_str": "GET /api/warehouse/orders/queued"
+      },
+      "Lookups": [
+        {
+          "TargetColumn": "role_id",
+          "LookupTable": "userroles",
+          "LookupColumn": "name",
+          "SelectColumn": "id",
+          "LookupValue": "Warehouse Admin",
+          "Required": true
+        }
+      ]
+    },
+    {
+      "Values": {
+        "role_id": 0,
+        "api_str": "GET /api/warehouse/orders/{id}"
+      },
+      "Lookups": [
+        {
+          "TargetColumn": "role_id",
+          "LookupTable": "userroles",
+          "LookupColumn": "name",
+          "SelectColumn": "id",
+          "LookupValue": "Warehouse Admin",
+          "Required": true
+        }
+      ]
+    },
+    {
+      "Values": {
+        "role_id": 0,
+        "api_str": "POST /api/warehouse/orders/{id}/status"
+      },
+      "Lookups": [
+        {
+          "TargetColumn": "role_id",
+          "LookupTable": "userroles",
+          "LookupColumn": "name",
+          "SelectColumn": "id",
+          "LookupValue": "Warehouse Admin",
+          "Required": true
+        }
+      ]
+    },
+    {
+      "Values": {
+        "role_id": 0,
+        "api_str": "POST /api/warehouse/orders/{id}/release"
+      },
+      "Lookups": [
+        {
+          "TargetColumn": "role_id",
+          "LookupTable": "userroles",
+          "LookupColumn": "name",
+          "SelectColumn": "id",
+          "LookupValue": "Warehouse Admin",
+          "Required": true
+        }
+      ]
+    },
+
+    {
+      "Values": {
+        "role_id": 0,
+        "api_str": "GET /api/warehouse/locations"
+      },
+      "Lookups": [
+        {
+          "TargetColumn": "role_id",
+          "LookupTable": "userroles",
+          "LookupColumn": "name",
+          "SelectColumn": "id",
+          "LookupValue": "Administrators",
+          "Required": true
+        }
+      ]
+    },
+    {
+      "Values": {
+        "role_id": 0,
+        "api_str": "GET /api/warehouse/orders"
+      },
+      "Lookups": [
+        {
+          "TargetColumn": "role_id",
+          "LookupTable": "userroles",
+          "LookupColumn": "name",
+          "SelectColumn": "id",
+          "LookupValue": "Administrators",
+          "Required": true
+        }
+      ]
+    },
+    {
+      "Values": {
+        "role_id": 0,
+        "api_str": "GET /api/warehouse/orders/queued"
+      },
+      "Lookups": [
+        {
+          "TargetColumn": "role_id",
+          "LookupTable": "userroles",
+          "LookupColumn": "name",
+          "SelectColumn": "id",
+          "LookupValue": "Administrators",
+          "Required": true
+        }
+      ]
+    },
+    {
+      "Values": {
+        "role_id": 0,
+        "api_str": "GET /api/warehouse/orders/{id}"
+      },
+      "Lookups": [
+        {
+          "TargetColumn": "role_id",
+          "LookupTable": "userroles",
+          "LookupColumn": "name",
+          "SelectColumn": "id",
+          "LookupValue": "Administrators",
+          "Required": true
+        }
+      ]
+    },
+    {
+      "Values": {
+        "role_id": 0,
+        "api_str": "POST /api/warehouse/orders/{id}/status"
+      },
+      "Lookups": [
+        {
+          "TargetColumn": "role_id",
+          "LookupTable": "userroles",
+          "LookupColumn": "name",
+          "SelectColumn": "id",
+          "LookupValue": "Administrators",
+          "Required": true
+        }
+      ]
+    },
+    {
+      "Values": {
+        "role_id": 0,
+        "api_str": "POST /api/warehouse/orders/{id}/release"
+      },
+      "Lookups": [
+        {
+          "TargetColumn": "role_id",
+          "LookupTable": "userroles",
+          "LookupColumn": "name",
+          "SelectColumn": "id",
+          "LookupValue": "Administrators",
+          "Required": true
+        }
+      ]
+    }
+  ]
+}

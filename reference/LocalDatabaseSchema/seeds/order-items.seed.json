@@ -1,0 +1,191 @@
+{
+  "TableName": "order_items",
+  "Mode": "insert_all_if_table_empty",
+  "MatchColumns": [],
+  "PatchColumnsWhenEmpty": [],
+  "ZeroIsEmptyColumns": [],
+  "Rows": [
+    {
+      "Values": {
+        "inventory_instance_guid": "bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbb001"
+      },
+      "Lookups": [
+        {
+          "TargetColumn": "order_id",
+          "LookupTable": "orders",
+          "LookupColumn": "order_number",
+          "SelectColumn": "id",
+          "LookupValue": "WH-3001"
+        }
+      ]
+    },
+    {
+      "Values": {
+        "inventory_instance_guid": "bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbb002"
+      },
+      "Lookups": [
+        {
+          "TargetColumn": "order_id",
+          "LookupTable": "orders",
+          "LookupColumn": "order_number",
+          "SelectColumn": "id",
+          "LookupValue": "WH-3002"
+        }
+      ]
+    },
+    {
+      "Values": {
+        "inventory_instance_guid": "bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbb003"
+      },
+      "Lookups": [
+        {
+          "TargetColumn": "order_id",
+          "LookupTable": "orders",
+          "LookupColumn": "order_number",
+          "SelectColumn": "id",
+          "LookupValue": "TR-4001"
+        }
+      ]
+    },
+    {
+      "Values": {
+        "inventory_instance_guid": "bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbb004"
+      },
+      "Lookups": [
+        {
+          "TargetColumn": "order_id",
+          "LookupTable": "orders",
+          "LookupColumn": "order_number",
+          "SelectColumn": "id",
+          "LookupValue": "WH-3003"
+        }
+      ]
+    },
+    {
+      "Values": {
+        "inventory_instance_guid": "bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbb005"
+      },
+      "Lookups": [
+        {
+          "TargetColumn": "order_id",
+          "LookupTable": "orders",
+          "LookupColumn": "order_number",
+          "SelectColumn": "id",
+          "LookupValue": "TR-4101"
+        }
+      ]
+    },
+    {
+      "Values": {
+        "inventory_instance_guid": "bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbb006"
+      },
+      "Lookups": [
+        {
+          "TargetColumn": "order_id",
+          "LookupTable": "orders",
+          "LookupColumn": "order_number",
+          "SelectColumn": "id",
+          "LookupValue": "TR-4102"
+        }
+      ]
+    },
+    {
+      "Values": {
+        "inventory_instance_guid": "bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbb007"
+      },
+      "Lookups": [
+        {
+          "TargetColumn": "order_id",
+          "LookupTable": "orders",
+          "LookupColumn": "order_number",
+          "SelectColumn": "id",
+          "LookupValue": "WH-3201"
+        }
+      ]
+    },
+    {
+      "Values": {
+        "inventory_instance_guid": "bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbb008"
+      },
+      "Lookups": [
+        {
+          "TargetColumn": "order_id",
+          "LookupTable": "orders",
+          "LookupColumn": "order_number",
+          "SelectColumn": "id",
+          "LookupValue": "WH-3301"
+        }
+      ]
+    },
+    {
+      "Values": {
+        "inventory_instance_guid": "bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbb009"
+      },
+      "Lookups": [
+        {
+          "TargetColumn": "order_id",
+          "LookupTable": "orders",
+          "LookupColumn": "order_number",
+          "SelectColumn": "id",
+          "LookupValue": "TR-4201"
+        }
+      ]
+    },
+    {
+      "Values": {
+        "inventory_instance_guid": "bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbb010"
+      },
+      "Lookups": [
+        {
+          "TargetColumn": "order_id",
+          "LookupTable": "orders",
+          "LookupColumn": "order_number",
+          "SelectColumn": "id",
+          "LookupValue": "TR-4202"
+        }
+      ]
+    },
+    {
+      "Values": {
+        "inventory_instance_guid": "bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbb011"
+      },
+      "Lookups": [
+        {
+          "TargetColumn": "order_id",
+          "LookupTable": "orders",
+          "LookupColumn": "order_number",
+          "SelectColumn": "id",
+          "LookupValue": "WH-3401"
+        }
+      ]
+    },
+    {
+      "Values": {
+        "inventory_instance_guid": "bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbb012"
+      },
+      "Lookups": [
+        {
+          "TargetColumn": "order_id",
+          "LookupTable": "orders",
+          "LookupColumn": "order_number",
+          "SelectColumn": "id",
+          "LookupValue": "WH-3402"
+        }
+      ]
+    },
+    {
+      "Values": {
+        "inventory_instance_guid": "bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbb013"
+      },
+      "Lookups": [
+        {
+          "TargetColumn": "order_id",
+          "LookupTable": "orders",
+          "LookupColumn": "order_number",
+          "SelectColumn": "id",
+          "LookupValue": "WH-3403"
+        }
+      ]
+    }
+  ]
+}

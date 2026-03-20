@@ -1,0 +1,70 @@
+{
+  "TableName": "sessions",
+  "Columns": [
+    {
+      "Name": "token_hash",
+      "Type": "VARCHAR(64)",
+      "Nullable": false
+    },
+    {
+      "Name": "user_id",
+      "Type": "INT",
+      "Nullable": false
+    },
+    {
+      "Name": "created_at",
+      "Type": "DATETIME",
+      "Nullable": false,
+      "DefaultSql": "CURRENT_TIMESTAMP"
+    },
+    {
+      "Name": "expires_at",
+      "Type": "DATETIME",
+      "Nullable": false
+    },
+    {
+      "Name": "last_seen_at",
+      "Type": "DATETIME",
+      "Nullable": false,
+      "DefaultSql": "CURRENT_TIMESTAMP"
+    },
+    {
+      "Name": "revoked_at",
+      "Type": "DATETIME",
+      "Nullable": true
+    },
+    {
+      "Name": "client_ip",
+      "Type": "VARCHAR(64)",
+      "Nullable": true
+    },
+    {
+      "Name": "user_agent",
+      "Type": "VARCHAR(512)",
+      "Nullable": true
+    }
+  ],
+  "Indexes": [
+    {
+      "Name": "idx_sessions_user_id",
+      "Columns": [
+        "user_id"
+      ]
+    },
+    {
+      "Name": "idx_sessions_expires_at",
+      "Columns": [
+        "expires_at"
+      ]
+    }
+  ],
+  "UniqueIndexes": [
+    {
+      "Name": "uq_sessions_token_hash",
+      "Columns": [
+        "token_hash"
+      ]
+    }
+  ],
+  "ForeignKeys": []
+}

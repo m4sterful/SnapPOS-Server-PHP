@@ -1,0 +1,18 @@
+{
+  "tableName": "example_table",
+  "mode": "ensure_missing_rows",
+  "matchColumns": [
+    "example_key"
+  ],
+  "patchColumnsWhenEmpty": [],
+  "zeroIsEmptyColumns": [],
+  "rows": [
+    {
+      "values": {
+        "example_key": "alpha",
+        "example_value": "beta"
+      },
+      "lookups": []
+    }
+  ]
+}

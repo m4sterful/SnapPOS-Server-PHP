@@ -1,0 +1,67 @@
+{
+  "TableName": "locations",
+  "Mode": "ensure_missing_rows",
+  "MatchColumns": [
+    "guid"
+  ],
+  "PatchColumnsWhenEmpty": [],
+  "ZeroIsEmptyColumns": [],
+  "Rows": [
+    {
+      "Values": {
+        "guid": "11111111-1111-1111-1111-111111111111",
+        "location_name": "Main Warehouse",
+        "address_line1": "100 Warehouse Way",
+        "city": "Toronto",
+        "province": "ON",
+        "postal_code": "M5V1A1",
+        "country": "Canada",
+        "location_type": "Warehouse",
+        "tag": "WH-MAIN"
+      },
+      "Lookups": []
+    },
+    {
+      "Values": {
+        "guid": "22222222-2222-2222-2222-222222222222",
+        "location_name": "Store A",
+        "address_line1": "10 Queen Street",
+        "city": "Toronto",
+        "province": "ON",
+        "postal_code": "M5V1B1",
+        "country": "Canada",
+        "location_type": "Store",
+        "tag": "STORE-A"
+      },
+      "Lookups": []
+    },
+    {
+      "Values": {
+        "guid": "33333333-3333-3333-3333-333333333333",
+        "location_name": "Store B",
+        "address_line1": "25 King Street",
+        "city": "Toronto",
+        "province": "ON",
+        "postal_code": "M5V1C1",
+        "country": "Canada",
+        "location_type": "Store",
+        "tag": "STORE-B"
+      },
+      "Lookups": []
+    },
+    {
+      "Values": {
+        "guid": "44444444-4444-4444-4444-444444444444",
+        "location_name": "Northline Delivery",
+        "address_line1": "80 Harbour Street",
+        "city": "Toronto",
+        "province": "ON",
+        "postal_code": "M5J2L9",
+        "country": "Canada",
+        "location_type": "Customer",
+        "tag": "CUSTOMER-NORTHLINE"
+      },
+      "Lookups": []
+    }
+  ]
+}

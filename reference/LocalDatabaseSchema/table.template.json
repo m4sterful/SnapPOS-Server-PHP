@@ -1,0 +1,19 @@
+{
+  "tableName": "example_table",
+  "columns": [
+    {
+      "name": "example_text",
+      "type": "VARCHAR(128)",
+      "nullable": true
+    },
+    {
+      "name": "created_at",
+      "type": "DATETIME",
+      "nullable": true,
+      "defaultSql": "CURRENT_TIMESTAMP"
+    }
+  ],
+  "indexes": [],
+  "uniqueIndexes": [],
+  "foreignKeys": []
+}

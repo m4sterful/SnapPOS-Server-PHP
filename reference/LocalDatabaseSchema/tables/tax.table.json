@@ -1,0 +1,22 @@
+{
+  "tableName": "tax",
+  "columns": [
+    {
+      "name": "tax_type",
+      "type": "TEXT",
+      "nullable": true
+    },
+    {
+      "name": "description",
+      "type": "TEXT",
+      "nullable": true
+    },
+    {
+      "name": "rate",
+      "type": "FLOAT",
+      "nullable": true
+    }
+  ],
+  "indexes": [],
+  "uniqueIndexes": []
+}

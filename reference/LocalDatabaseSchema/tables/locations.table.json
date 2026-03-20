@@ -1,0 +1,90 @@
+{
+  "TableName": "locations",
+  "Columns": [
+    {
+      "Name": "guid",
+      "Type": "CHAR(36)",
+      "Nullable": false
+    },
+    {
+      "Name": "location_name",
+      "Type": "TEXT",
+      "Nullable": true
+    },
+    {
+      "Name": "address_line1",
+      "Type": "TEXT",
+      "Nullable": true
+    },
+    {
+      "Name": "address_line2",
+      "Type": "TEXT",
+      "Nullable": true
+    },
+    {
+      "Name": "city",
+      "Type": "TEXT",
+      "Nullable": true
+    },
+    {
+      "Name": "province",
+      "Type": "TEXT",
+      "Nullable": true
+    },
+    {
+      "Name": "postal_code",
+      "Type": "TEXT",
+      "Nullable": true
+    },
+    {
+      "Name": "country",
+      "Type": "TEXT",
+      "Nullable": true
+    },
+    {
+      "Name": "location_type",
+      "Type": "TEXT",
+      "Nullable": true
+    },
+    {
+      "Name": "tag",
+      "Type": "TEXT",
+      "Nullable": true
+    }
+  ],
+  "Indexes": [
+    {
+      "Name": "idx_locations_guid",
+      "Columns": [
+        "guid"
+      ]
+    },
+    {
+      "Name": "idx_locations_name",
+      "Columns": [
+        "location_name"
+      ]
+    },
+    {
+      "Name": "idx_locations_type",
+      "Columns": [
+        "location_type"
+      ]
+    },
+    {
+      "Name": "idx_locations_postal",
+      "Columns": [
+        "postal_code"
+      ]
+    }
+  ],
+  "UniqueIndexes": [
+    {
+      "Name": "uq_locations_guid",
+      "Columns": [
+        "guid"
+      ]
+    }
+  ],
+  "ForeignKeys": []
+}

@@ -1,0 +1,77 @@
+﻿{
+  "TableName": "vendors",
+  "Columns": [
+    {
+      "Name": "code",
+      "Type": "TEXT",
+      "Nullable": true
+    },
+    {
+      "Name": "vendor_name",
+      "Type": "TEXT",
+      "Nullable": true
+    },
+    {
+      "Name": "country",
+      "Type": "TEXT",
+      "Nullable": true
+    },
+    {
+      "Name": "currency",
+      "Type": "TEXT",
+      "Nullable": true
+    },
+    {
+      "Name": "guid",
+      "Type": "CHAR(36)",
+      "Nullable": false
+    },
+    {
+      "Name": "status",
+      "Type": "INT",
+      "Nullable": true
+    },
+    {
+      "Name": "fifo",
+      "Type": "INT",
+      "Nullable": true
+    },
+    {
+      "Name": "lead_time",
+      "Type": "INT",
+      "Nullable": true
+    },
+    {
+      "Name": "shipping_time",
+      "Type": "INT",
+      "Nullable": true
+    },
+    {
+      "Name": "tax_amount",
+      "Type": "INT",
+      "Nullable": true
+    },
+    {
+      "Name": "dropship",
+      "Type": "INT",
+      "Nullable": true
+    }
+  ],
+  "Indexes": [
+    {
+      "Name": "idx_vendors_code",
+      "Columns": [
+        "code"
+      ]
+    }
+  ],
+  "UniqueIndexes": [
+    {
+      "Name": "uq_vendors_code",
+      "Columns": [
+        "code"
+      ]
+    }
+  ],
+  "ForeignKeys": []
+}

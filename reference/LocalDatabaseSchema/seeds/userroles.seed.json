@@ -1,0 +1,107 @@
+﻿{
+  "TableName": "userroles",
+  "Mode": "ensure_missing_rows",
+  "MatchColumns": [
+    "name"
+  ],
+  "PatchColumnsWhenEmpty": [],
+  "ZeroIsEmptyColumns": [],
+  "Rows": [
+    {
+      "Values": {
+        "name": "Administrators"
+      },
+      "Lookups": []
+    },
+    {
+      "Values": {
+        "name": "Purchasing"
+      },
+      "Lookups": []
+    },
+    {
+      "Values": {
+        "name": "Sales"
+      },
+      "Lookups": []
+    },
+    {
+      "Values": {
+        "name": "Area Manager"
+      },
+      "Lookups": []
+    },
+    {
+      "Values": {
+        "name": "Home Delivery"
+      },
+      "Lookups": []
+    },
+    {
+      "Values": {
+        "name": "Store Manager"
+      },
+      "Lookups": []
+    },
+    {
+      "Values": {
+        "name": "Warehouse"
+      },
+      "Lookups": []
+    },
+    {
+      "Values": {
+        "name": "Warehouse Admin"
+      },
+      "Lookups": []
+    },
+    {
+      "Values": {
+        "name": "Inventory"
+      },
+      "Lookups": []
+    },
+    {
+      "Values": {
+        "name": "Finance"
+      },
+      "Lookups": []
+    },
+    {
+      "Values": {
+        "name": "Repairs"
+      },
+      "Lookups": []
+    },
+    {
+      "Values": {
+        "name": "Marketing"
+      },
+      "Lookups": []
+    },
+    {
+      "Values": {
+        "name": "Customer Service"
+      },
+      "Lookups": []
+    },
+    {
+      "Values": {
+        "name": "Restricted"
+      },
+      "Lookups": []
+    },
+    {
+      "Values": {
+        "name": "Public Web"
+      },
+      "Lookups": []
+    },
+    {
+      "Values": {
+        "name": "No Access"
+      },
+      "Lookups": []
+    }
+  ]
+}

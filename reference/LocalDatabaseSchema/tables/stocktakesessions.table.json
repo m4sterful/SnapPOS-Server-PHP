@@ -1,0 +1,75 @@
+﻿{
+  "TableName": "stocktakesessions",
+  "Columns": [
+    {
+      "Name": "guid",
+      "Type": "CHAR(36)",
+      "Nullable": true
+    },
+    {
+      "Name": "session_code",
+      "Type": "TEXT",
+      "Nullable": true
+    },
+    {
+      "Name": "store_guid",
+      "Type": "CHAR(36)",
+      "Nullable": true
+    },
+    {
+      "Name": "status",
+      "Type": "TEXT",
+      "Nullable": true
+    },
+    {
+      "Name": "notes",
+      "Type": "TEXT",
+      "Nullable": true
+    },
+    {
+      "Name": "active",
+      "Type": "INT",
+      "Nullable": true
+    },
+    {
+      "Name": "created_by",
+      "Type": "INT",
+      "Nullable": true
+    },
+    {
+      "Name": "last_modified",
+      "Type": "DATETIME",
+      "Nullable": true,
+      "DefaultSql": "CURRENT_TIMESTAMP"
+    }
+  ],
+  "Indexes": [
+    {
+      "Name": "idx_sessions_code",
+      "Columns": [
+        "session_code"
+      ]
+    },
+    {
+      "Name": "idx_sessions_store",
+      "Columns": [
+        "store_guid"
+      ]
+    }
+  ],
+  "UniqueIndexes": [],
+  "ForeignKeys": [
+    {
+      "Name": "fk_stocktakesessions_store_guid",
+      "Columns": [
+        "store_guid"
+      ],
+      "ReferencedTable": "locations",
+      "ReferencedColumns": [
+        "guid"
+      ],
+      "OnDelete": "SET NULL",
+      "OnUpdate": "CASCADE"
+    }
+  ]
+}

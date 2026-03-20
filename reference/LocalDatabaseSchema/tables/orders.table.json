@@ -1,0 +1,236 @@
+{
+  "TableName": "orders",
+  "Columns": [
+    {
+      "Name": "guid",
+      "Type": "CHAR(36)",
+      "Nullable": false
+    },
+    {
+      "Name": "order_number",
+      "Type": "VARCHAR(64)",
+      "Nullable": false
+    },
+    {
+      "Name": "location_id",
+      "Type": "INT",
+      "Nullable": false
+    },
+    {
+      "Name": "order_type",
+      "Type": "VARCHAR(32)",
+      "Nullable": false
+    },
+    {
+      "Name": "location_label",
+      "Type": "VARCHAR(128)",
+      "Nullable": false
+    },
+    {
+      "Name": "customer_name",
+      "Type": "VARCHAR(128)",
+      "Nullable": false
+    },
+    {
+      "Name": "source_location_id",
+      "Type": "INT",
+      "Nullable": true
+    },
+    {
+      "Name": "source_location_label",
+      "Type": "VARCHAR(128)",
+      "Nullable": true
+    },
+    {
+      "Name": "destination_location_id",
+      "Type": "INT",
+      "Nullable": true
+    },
+    {
+      "Name": "destination_location_label",
+      "Type": "VARCHAR(128)",
+      "Nullable": true
+    },
+    {
+      "Name": "vendor_id",
+      "Type": "INT",
+      "Nullable": true
+    },
+    {
+      "Name": "status",
+      "Type": "VARCHAR(32)",
+      "Nullable": false
+    },
+    {
+      "Name": "priority",
+      "Type": "INT",
+      "Nullable": false
+    },
+    {
+      "Name": "item_count",
+      "Type": "INT",
+      "Nullable": false
+    },
+    {
+      "Name": "order_total",
+      "Type": "DECIMAL(10,2)",
+      "Nullable": false
+    },
+    {
+      "Name": "sales_channel",
+      "Type": "VARCHAR(64)",
+      "Nullable": true
+    },
+    {
+      "Name": "requested_ship_date",
+      "Type": "DATE",
+      "Nullable": true
+    },
+    {
+      "Name": "notes",
+      "Type": "TEXT",
+      "Nullable": true
+    },
+    {
+      "Name": "released_at_utc",
+      "Type": "DATETIME",
+      "Nullable": true
+    },
+    {
+      "Name": "released_by_user_id",
+      "Type": "INT",
+      "Nullable": true
+    },
+    {
+      "Name": "release_mode",
+      "Type": "VARCHAR(32)",
+      "Nullable": true
+    },
+    {
+      "Name": "release_note",
+      "Type": "TEXT",
+      "Nullable": true
+    },
+    {
+      "Name": "created_at",
+      "Type": "DATETIME",
+      "Nullable": false,
+      "DefaultSql": "CURRENT_TIMESTAMP"
+    },
+    {
+      "Name": "updated_at",
+      "Type": "DATETIME",
+      "Nullable": false,
+      "DefaultSql": "CURRENT_TIMESTAMP",
+      "OnUpdateSql": "CURRENT_TIMESTAMP"
+    }
+  ],
+  "Indexes": [
+    {
+      "Name": "idx_orders_location_id",
+      "Columns": [
+        "location_id"
+      ]
+    },
+    {
+      "Name": "idx_orders_type",
+      "Columns": [
+        "order_type"
+      ]
+    },
+    {
+      "Name": "idx_orders_status",
+      "Columns": [
+        "status"
+      ]
+    },
+    {
+      "Name": "idx_orders_destination_location_id",
+      "Columns": [
+        "destination_location_id"
+      ]
+    },
+    {
+      "Name": "idx_orders_requested_ship_date",
+      "Columns": [
+        "requested_ship_date"
+      ]
+    }
+  ],
+  "UniqueIndexes": [
+    {
+      "Name": "uq_orders_guid",
+      "Columns": [
+        "guid"
+      ]
+    },
+    {
+      "Name": "uq_orders_order_number",
+      "Columns": [
+        "order_number"
+      ]
+    }
+  ],
+  "ForeignKeys": [
+    {
+      "Name": "fk_orders_location_id",
+      "Columns": [
+        "location_id"
+      ],
+      "ReferencedTable": "locations",
+      "ReferencedColumns": [
+        "id"
+      ],
+      "OnDelete": "RESTRICT",
+      "OnUpdate": "CASCADE"
+    },
+    {
+      "Name": "fk_orders_source_location_id",
+      "Columns": [
+        "source_location_id"
+      ],
+      "ReferencedTable": "locations",
+      "ReferencedColumns": [
+        "id"
+      ],
+      "OnDelete": "SET NULL",
+      "OnUpdate": "CASCADE"
+    },
+    {
+      "Name": "fk_orders_destination_location_id",
+      "Columns": [
+        "destination_location_id"
+      ],
+      "ReferencedTable": "locations",
+      "ReferencedColumns": [
+        "id"
+      ],
+      "OnDelete": "SET NULL",
+      "OnUpdate": "CASCADE"
+    },
+    {
+      "Name": "fk_orders_vendor_id",
+      "Columns": [
+        "vendor_id"
+      ],
+      "ReferencedTable": "vendors",
+      "ReferencedColumns": [
+        "id"
+      ],
+      "OnDelete": "SET NULL",
+      "OnUpdate": "CASCADE"
+    },
+    {
+      "Name": "fk_orders_released_by_user_id",
+      "Columns": [
+        "released_by_user_id"
+      ],
+      "ReferencedTable": "users",
+      "ReferencedColumns": [
+        "id"
+      ],
+      "OnDelete": "SET NULL",
+      "OnUpdate": "CASCADE"
+    }
+  ]
+}

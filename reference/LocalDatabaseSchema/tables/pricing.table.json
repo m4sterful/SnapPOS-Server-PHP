@@ -1,0 +1,109 @@
+﻿{
+  "TableName": "pricing",
+  "Columns": [
+    {
+      "Name": "inventory_guid",
+      "Type": "CHAR(36)",
+      "Nullable": false
+    },
+    {
+      "Name": "parent_guid",
+      "Type": "CHAR(36)",
+      "Nullable": true
+    },
+    {
+      "Name": "currency",
+      "Type": "TEXT",
+      "Nullable": true
+    },
+    {
+      "Name": "category",
+      "Type": "TEXT",
+      "Nullable": true
+    },
+    {
+      "Name": "comment",
+      "Type": "TEXT",
+      "Nullable": true
+    },
+    {
+      "Name": "tax_rate_id",
+      "Type": "INT",
+      "Nullable": true
+    },
+    {
+      "Name": "price_type_id",
+      "Type": "INT",
+      "Nullable": true
+    },
+    {
+      "Name": "updated_by_user",
+      "Type": "INT",
+      "Nullable": true
+    },
+    {
+      "Name": "price",
+      "Type": "DECIMAL(10,2)",
+      "Nullable": true
+    },
+    {
+      "Name": "effective_date",
+      "Type": "DATETIME",
+      "Nullable": true,
+      "DefaultSql": "CURRENT_TIMESTAMP"
+    },
+    {
+      "Name": "expiry_date",
+      "Type": "DATETIME",
+      "Nullable": true,
+      "DefaultSql": "CURRENT_TIMESTAMP"
+    },
+    {
+      "Name": "date_added",
+      "Type": "DATETIME",
+      "Nullable": true,
+      "DefaultSql": "CURRENT_TIMESTAMP"
+    },
+    {
+      "Name": "date_updated",
+      "Type": "DATETIME",
+      "Nullable": true,
+      "DefaultSql": "CURRENT_TIMESTAMP"
+    }
+  ],
+  "Indexes": [
+    {
+      "Name": "idx_pricing_inventory_guid",
+      "Columns": [
+        "inventory_guid"
+      ]
+    },
+    {
+      "Name": "idx_pricing_category",
+      "Columns": [
+        "category"
+      ]
+    },
+    {
+      "Name": "idx_pricing_effective_date",
+      "Columns": [
+        "effective_date"
+      ]
+    }
+  ],
+  "UniqueIndexes": [],
+  "ForeignKeys": [
+    {
+      "Name": "fk_pricing_inventory_guid",
+      "Columns": [
+        "inventory_guid"
+      ],
+      "ReferencedTable": "inventory_template",
+      "ReferencedColumns": [
+        "guid"
+      ],
+      "OnDelete": "RESTRICT",
+      "OnUpdate": "CASCADE"
+    }
+  ]
+}

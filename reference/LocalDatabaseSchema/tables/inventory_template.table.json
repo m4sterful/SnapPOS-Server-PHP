@@ -1,0 +1,155 @@
+﻿{
+  "TableName": "inventory_template",
+  "Columns": [
+    {
+      "Name": "product_name",
+      "Type": "TEXT",
+      "Nullable": true
+    },
+    {
+      "Name": "description",
+      "Type": "TEXT",
+      "Nullable": true
+    },
+    {
+      "Name": "ref_part_no",
+      "Type": "TEXT",
+      "Nullable": true
+    },
+    {
+      "Name": "product_family",
+      "Type": "TEXT",
+      "Nullable": true
+    },
+    {
+      "Name": "product_type",
+      "Type": "TEXT",
+      "Nullable": true
+    },
+    {
+      "Name": "related_products",
+      "Type": "TEXT",
+      "Nullable": true
+    },
+    {
+      "Name": "web_link",
+      "Type": "TEXT",
+      "Nullable": true
+    },
+    {
+      "Name": "barcode",
+      "Type": "TEXT",
+      "Nullable": true
+    },
+    {
+      "Name": "additional_info",
+      "Type": "TEXT",
+      "Nullable": true
+    },
+    {
+      "Name": "long_description",
+      "Type": "TEXT",
+      "Nullable": true
+    },
+    {
+      "Name": "guid",
+      "Type": "CHAR(36)",
+      "Nullable": false
+    },
+    {
+      "Name": "active",
+      "Type": "INT",
+      "Nullable": true
+    },
+    {
+      "Name": "allow_sales",
+      "Type": "INT",
+      "Nullable": true
+    },
+    {
+      "Name": "allow_por",
+      "Type": "INT",
+      "Nullable": true
+    },
+    {
+      "Name": "allow_oversale",
+      "Type": "INT",
+      "Nullable": true
+    },
+    {
+      "Name": "allow_delivery",
+      "Type": "INT",
+      "Nullable": true
+    },
+    {
+      "Name": "allow_finance",
+      "Type": "INT",
+      "Nullable": true
+    },
+    {
+      "Name": "serialize",
+      "Type": "INT",
+      "Nullable": true
+    },
+    {
+      "Name": "assembly_required",
+      "Type": "INT",
+      "Nullable": true
+    },
+    {
+      "Name": "discontinued",
+      "Type": "INT",
+      "Nullable": true
+    },
+    {
+      "Name": "modified_by",
+      "Type": "INT",
+      "Nullable": true
+    },
+    {
+      "Name": "department",
+      "Type": "INT",
+      "Nullable": true
+    },
+    {
+      "Name": "supplier",
+      "Type": "INT",
+      "Nullable": true
+    },
+    {
+      "Name": "last_updated",
+      "Type": "DATETIME",
+      "Nullable": true,
+      "DefaultSql": "CURRENT_TIMESTAMP"
+    }
+  ],
+  "Indexes": [
+    {
+      "Name": "idx_inventory_ref_part_no",
+      "Columns": [
+        "ref_part_no"
+      ]
+    },
+    {
+      "Name": "idx_inventory_barcode",
+      "Columns": [
+        "barcode"
+      ]
+    },
+    {
+      "Name": "idx_inventory_last_updated",
+      "Columns": [
+        "last_updated"
+      ]
+    }
+  ],
+  "UniqueIndexes": [
+    {
+      "Name": "uq_inventory_template_guid",
+      "Columns": [
+        "guid"
+      ]
+    }
+  ],
+  "ForeignKeys": []
+}

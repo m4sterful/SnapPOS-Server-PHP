@@ -1,0 +1,31 @@
+﻿{
+  "TableName": "users",
+  "Mode": "ensure_missing_rows",
+  "MatchColumns": [
+    "username"
+  ],
+  "PatchColumnsWhenEmpty": [],
+  "ZeroIsEmptyColumns": [],
+  "Rows": [
+    {
+      "Values": {
+        "username": "admin",
+        "password_hash": "815748bdbb1078b8f9cfed63e22b828b2f85918fbaa2c9fb46e04863c8bd149b",
+        "salt": "dotpos-default-admin-seed-salt-01",
+        "location": 1,
+        "created_by": 1,
+        "active": 1
+      },
+      "Lookups": [
+        {
+          "TargetColumn": "permissions",
+          "LookupTable": "userroles",
+          "LookupColumn": "name",
+          "SelectColumn": "id",
+          "LookupValue": "Administrators",
+          "Required": false
+        }
+      ]
+    }
+  ]
+}

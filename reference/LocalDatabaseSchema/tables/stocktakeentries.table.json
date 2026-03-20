@@ -1,0 +1,44 @@
+﻿{
+  "TableName": "stocktakeentries",
+  "Columns": [
+    {
+      "Name": "inventory_ref",
+      "Type": "TEXT",
+      "Nullable": true
+    },
+    {
+      "Name": "note",
+      "Type": "TEXT",
+      "Nullable": true
+    },
+    {
+      "Name": "session_id",
+      "Type": "INT",
+      "Nullable": true
+    },
+    {
+      "Name": "user_id",
+      "Type": "INT",
+      "Nullable": true
+    },
+    {
+      "Name": "count",
+      "Type": "INT",
+      "Nullable": true
+    },
+    {
+      "Name": "inventory_id",
+      "Type": "INT",
+      "Nullable": true
+    },
+    {
+      "Name": "last_modified",
+      "Type": "DATETIME",
+      "Nullable": true,
+      "DefaultSql": "CURRENT_TIMESTAMP"
+    }
+  ],
+  "Indexes": [],
+  "UniqueIndexes": [],
+  "ForeignKeys": []
+}

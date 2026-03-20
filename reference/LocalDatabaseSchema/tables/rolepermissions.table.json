@@ -1,0 +1,38 @@
+{
+  "tableName": "rolepermissions",
+  "columns": [
+    {
+      "name": "api_str",
+      "type": "TEXT",
+      "nullable": false
+    },
+    {
+      "name": "role_id",
+      "type": "INT",
+      "nullable": false
+    }
+  ],
+  "indexes": [
+    {
+      "name": "idx_rp_name",
+      "columns": [
+        "api_str"
+      ]
+    },
+    {
+      "name": "idx_rp_id",
+      "columns": [
+        "role_id"
+      ]
+    }
+  ],
+  "uniqueIndexes": [
+    {
+      "name": "uq_rolepermissions_role_id_api_str",
+      "columns": [
+        "role_id",
+        "api_str"
+      ]
+    }
+  ]
+}

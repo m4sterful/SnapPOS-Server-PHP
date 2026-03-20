@@ -1,0 +1,56 @@
+﻿{
+  "TableName": "locationlinks",
+  "Columns": [
+    {
+      "Name": "customer_guid",
+      "Type": "CHAR(36)",
+      "Nullable": false
+    },
+    {
+      "Name": "location_guid",
+      "Type": "CHAR(36)",
+      "Nullable": false
+    }
+  ],
+  "Indexes": [
+    {
+      "Name": "idx_locationlinks_customer_guid",
+      "Columns": [
+        "customer_guid"
+      ]
+    },
+    {
+      "Name": "idx_locationlinks_location_guid",
+      "Columns": [
+        "location_guid"
+      ]
+    }
+  ],
+  "UniqueIndexes": [],
+  "ForeignKeys": [
+    {
+      "Name": "fk_locationlinks_customer_guid",
+      "Columns": [
+        "customer_guid"
+      ],
+      "ReferencedTable": "contacts",
+      "ReferencedColumns": [
+        "guid"
+      ],
+      "OnDelete": "CASCADE",
+      "OnUpdate": "CASCADE"
+    },
+    {
+      "Name": "fk_locationlinks_location_guid",
+      "Columns": [
+        "location_guid"
+      ],
+      "ReferencedTable": "locations",
+      "ReferencedColumns": [
+        "guid"
+      ],
+      "OnDelete": "CASCADE",
+      "OnUpdate": "CASCADE"
+    }
+  ]
+}

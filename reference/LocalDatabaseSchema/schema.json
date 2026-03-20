@@ -1,0 +1,205 @@
+{
+  "SchemaFormatVersion": 1,
+  "Tables": [
+    {
+      "TableName": "sys",
+      "File": "tables/sys.table.json",
+      "Version": 2,
+      "VersionKeyName": "Sys"
+    },
+    {
+      "TableName": "tax",
+      "File": "tables/tax.table.json",
+      "Version": 1,
+      "VersionKeyName": "Tax"
+    },
+    {
+      "TableName": "locations",
+      "File": "tables/locations.table.json",
+      "Version": 4,
+      "VersionKeyName": "Locations"
+    },
+    {
+      "TableName": "locationlinks",
+      "File": "tables/locationlinks.table.json",
+      "Version": 3,
+      "VersionKeyName": "LocationLinks"
+    },
+    {
+      "TableName": "contact_details",
+      "File": "tables/contact_details.table.json",
+      "Version": 5,
+      "VersionKeyName": "ContactDetails"
+    },
+    {
+      "TableName": "users",
+      "File": "tables/users.table.json",
+      "Version": 5,
+      "VersionKeyName": "Users"
+    },
+    {
+      "TableName": "userroles",
+      "File": "tables/userroles.table.json",
+      "Version": 1,
+      "VersionKeyName": "UserRoles"
+    },
+    {
+      "TableName": "contacts",
+      "File": "tables/contacts.table.json",
+      "Version": 7,
+      "VersionKeyName": "Contacts"
+    },
+    {
+      "TableName": "rolepermissions",
+      "File": "tables/rolepermissions.table.json",
+      "Version": 3,
+      "VersionKeyName": "RolePermissions"
+    },
+    {
+      "TableName": "vendors",
+      "File": "tables/vendors.table.json",
+      "Version": 2,
+      "VersionKeyName": "Vendors"
+    },
+    {
+      "TableName": "pricing",
+      "File": "tables/pricing.table.json",
+      "Version": 12,
+      "VersionKeyName": "Pricing"
+    },
+    {
+      "TableName": "pricetypes",
+      "File": "tables/pricetypes.table.json",
+      "Version": 1,
+      "VersionKeyName": "PriceTypes"
+    },
+    {
+      "TableName": "inventory_template",
+      "File": "tables/inventory_template.table.json",
+      "Version": 3,
+      "VersionKeyName": "InventoryTemplate"
+    },
+    {
+      "TableName": "inventory_instance",
+      "File": "tables/inventory_instance.table.json",
+      "Version": 6,
+      "VersionKeyName": "InventoryInstance"
+    },
+    {
+      "TableName": "stocktakesessions",
+      "File": "tables/stocktakesessions.table.json",
+      "Version": 5,
+      "VersionKeyName": "StockTakeSessions"
+    },
+    {
+      "TableName": "stocktakeentries",
+      "File": "tables/stocktakeentries.table.json",
+      "Version": 2,
+      "VersionKeyName": "StockTakeEntries"
+    },
+    {
+      "TableName": "sessions",
+      "File": "tables/sessions.table.json",
+      "Version": 1,
+      "VersionKeyName": "Sessions"
+    },
+    {
+      "TableName": "orders",
+      "File": "tables/orders.table.json",
+      "Version": 2,
+      "VersionKeyName": "Orders"
+    },
+    {
+      "TableName": "order_items",
+      "File": "tables/order_items.table.json",
+      "Version": 1,
+      "VersionKeyName": "OrderItems"
+    },
+    {
+      "TableName": "truck_schedule_entries",
+      "File": "tables/truck_schedule_entries.table.json",
+      "Version": 1,
+      "VersionKeyName": "TruckScheduleEntries"
+    }
+  ],
+  "Seeds": [
+    {
+      "SeedName": "userroles_defaults",
+      "File": "seeds/userroles.seed.json",
+      "Version": 2,
+      "VersionKeyName": "UserRolesDefaults"
+    },
+    {
+      "SeedName": "rolepermissions_defaults",
+      "File": "seeds/rolepermissions.seed.json",
+      "Version": 1,
+      "VersionKeyName": "RolePermissionsDefaults"
+    },
+    {
+      "SeedName": "users_admin_default",
+      "File": "seeds/users-admin.seed.json",
+      "Version": 1,
+      "VersionKeyName": "UsersAdminDefault"
+    },
+    {
+      "SeedName": "users_warehouse_default",
+      "File": "seeds/users-warehouse.seed.json",
+      "Version": 1,
+      "VersionKeyName": "UsersWarehouseDefault"
+    },
+    {
+      "SeedName": "locations_default_seed",
+      "File": "seeds/locations.seed.json",
+      "Version": 1,
+      "VersionKeyName": "LocationsDefault"
+    },
+    {
+      "SeedName": "tax_defaults",
+      "File": "seeds/tax.seed.json",
+      "Version": 1,
+      "VersionKeyName": "TaxDefaults"
+    },
+    {
+      "SeedName": "pricetypes_defaults",
+      "File": "seeds/pricetypes.seed.json",
+      "Version": 1,
+      "VersionKeyName": "PriceTypesDefaults"
+    },
+    {
+      "SeedName": "users_admin_pin_patch",
+      "File": "seeds/users-admin-pin.seed.json",
+      "Version": 1,
+      "VersionKeyName": "UsersAdminPin"
+    },
+    {
+      "SeedName": "inventory_template_default_seed",
+      "File": "seeds/inventory-template.seed.json",
+      "Version": 1,
+      "VersionKeyName": "InventoryTemplateDefault"
+    },
+    {
+      "SeedName": "inventory_instance_default_seed",
+      "File": "seeds/inventory-instance.seed.json",
+      "Version": 1,
+      "VersionKeyName": "InventoryInstanceDefault"
+    },
+    {
+      "SeedName": "truck_schedule_default_seed",
+      "File": "seeds/truck-schedule.seed.json",
+      "Version": 1,
+      "VersionKeyName": "TruckScheduleDefault"
+    },
+    {
+      "SeedName": "orders_default_seed",
+      "File": "seeds/orders.seed.json",
+      "Version": 2,
+      "VersionKeyName": "OrdersDefault"
+    },
+    {
+      "SeedName": "order_items_default_seed",
+      "File": "seeds/order-items.seed.json",
+      "Version": 1,
+      "VersionKeyName": "OrderItemsDefault"
+    }
+  ]
+}

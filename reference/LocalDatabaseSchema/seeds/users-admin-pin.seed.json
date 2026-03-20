@@ -1,0 +1,22 @@
+﻿{
+  "TableName": "users",
+  "Mode": "patch_existing_when_empty",
+  "MatchColumns": [
+    "username"
+  ],
+  "PatchColumnsWhenEmpty": [
+    "pin"
+  ],
+  "ZeroIsEmptyColumns": [
+    "pin"
+  ],
+  "Rows": [
+    {
+      "Values": {
+        "username": "admin",
+        "pin": 123456
+      },
+      "Lookups": []
+    }
+  ]
+}

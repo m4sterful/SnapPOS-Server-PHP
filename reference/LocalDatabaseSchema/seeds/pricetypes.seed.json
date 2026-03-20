@@ -1,0 +1,102 @@
+﻿{
+  "TableName": "pricetypes",
+  "Mode": "ensure_missing_rows",
+  "MatchColumns": [
+    "name"
+  ],
+  "PatchColumnsWhenEmpty": [],
+  "ZeroIsEmptyColumns": [],
+  "Rows": [
+    {
+      "Values": {
+        "name": "Purchase Price",
+        "description": "The price paid to acquire inventory (cost price)"
+      },
+      "Lookups": []
+    },
+    {
+      "Values": {
+        "name": "Landed Cost",
+        "description": "Total cost including shipping, duties, and taxes"
+      },
+      "Lookups": []
+    },
+    {
+      "Values": {
+        "name": "Wholesale Price",
+        "description": "The price offered to bulk buyers or resellers"
+      },
+      "Lookups": []
+    },
+    {
+      "Values": {
+        "name": "Retail Price",
+        "description": "The standard selling price for customers"
+      },
+      "Lookups": []
+    },
+    {
+      "Values": {
+        "name": "Sale Price",
+        "description": "Discounted price during a sale or promotion"
+      },
+      "Lookups": []
+    },
+    {
+      "Values": {
+        "name": "Clearance Price",
+        "description": "Discounted price for clearing old stock"
+      },
+      "Lookups": []
+    },
+    {
+      "Values": {
+        "name": "MAP Price",
+        "description": "Minimum Advertised Price (vendor-mandated)"
+      },
+      "Lookups": []
+    },
+    {
+      "Values": {
+        "name": "MSRP",
+        "description": "Manufacturer Suggested Retail Price"
+      },
+      "Lookups": []
+    },
+    {
+      "Values": {
+        "name": "Contract Price",
+        "description": "Special pricing for negotiated deals (B2B customers)"
+      },
+      "Lookups": []
+    },
+    {
+      "Values": {
+        "name": "Subscription Price",
+        "description": "Price for products sold on a subscription basis"
+      },
+      "Lookups": []
+    },
+    {
+      "Values": {
+        "name": "Custom Price",
+        "description": "Price overrides used for special transactions"
+      },
+      "Lookups": []
+    },
+    {
+      "Values": {
+        "name": "Cost\u002B Pricing",
+        "description": "Cost-based pricing with a dynamic markup"
+      },
+      "Lookups": []
+    },
+    {
+      "Values": {
+        "name": "Deleted",
+        "description": "The underlying item has been removed. The associated Part will be in the description."
+      },
+      "Lookups": []
+    }
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "tableName": "sys",
+  "columns": [
+    {
+      "name": "name",
+      "type": "TEXT",
+      "nullable": true
+    },
+    {
+      "name": "value",
+      "type": "TEXT",
+      "nullable": false
+    }
+  ],
+  "indexes": [
+    {
+      "name": "idx_sys_name",
+      "columns": [
+        "name"
+      ]
+    }
+  ],
+  "uniqueIndexes": [
+    {
+      "name": "uq_sys_name",
+      "columns": [
+        "name"
+      ]
+    }
+  ]
+}

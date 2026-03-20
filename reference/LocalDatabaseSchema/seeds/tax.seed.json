@@ -1,0 +1,19 @@
+﻿{
+  "TableName": "tax",
+  "Mode": "ensure_missing_rows",
+  "MatchColumns": [
+    "tax_type"
+  ],
+  "PatchColumnsWhenEmpty": [],
+  "ZeroIsEmptyColumns": [],
+  "Rows": [
+    {
+      "Values": {
+        "tax_type": "Goods \u0026 Services",
+        "description": "HST",
+        "rate": 0.13
+      },
+      "Lookups": []
+    }
+  ]
+}

@@ -1,0 +1,106 @@
+{
+  "TableName": "inventory_instance",
+  "Columns": [
+    {
+      "Name": "stock_type",
+      "Type": "TEXT",
+      "Nullable": true
+    },
+    {
+      "Name": "notes",
+      "Type": "TEXT",
+      "Nullable": true
+    },
+    {
+      "Name": "guid",
+      "Type": "CHAR(36)",
+      "Nullable": false
+    },
+    {
+      "Name": "location_guid",
+      "Type": "CHAR(36)",
+      "Nullable": true
+    },
+    {
+      "Name": "shipment_guid",
+      "Type": "CHAR(36)",
+      "Nullable": true
+    },
+    {
+      "Name": "last_updated",
+      "Type": "DATETIME",
+      "Nullable": true,
+      "DefaultSql": "CURRENT_TIMESTAMP"
+    },
+    {
+      "Name": "serial_number",
+      "Type": "TEXT",
+      "Nullable": true
+    },
+    {
+      "Name": "inventory_guid",
+      "Type": "CHAR(36)",
+      "Nullable": false
+    }
+  ],
+  "Indexes": [
+    {
+      "Name": "idx_inventory_instance_location_guid",
+      "Columns": [
+        "location_guid"
+      ]
+    },
+    {
+      "Name": "idx_inventory_instance_shipment_guid",
+      "Columns": [
+        "shipment_guid"
+      ]
+    }
+  ],
+  "UniqueIndexes": [
+    {
+      "Name": "uq_inventory_instance_guid",
+      "Columns": [
+        "guid"
+      ]
+    }
+  ],
+  "ForeignKeys": [
+    {
+      "Name": "fk_inventory_instance_inventory_guid",
+      "Columns": [
+        "inventory_guid"
+      ],
+      "ReferencedTable": "inventory_template",
+      "ReferencedColumns": [
+        "guid"
+      ],
+      "OnDelete": "RESTRICT",
+      "OnUpdate": "CASCADE"
+    },
+    {
+      "Name": "fk_inventory_instance_location_guid",
+      "Columns": [
+        "location_guid"
+      ],
+      "ReferencedTable": "locations",
+      "ReferencedColumns": [
+        "guid"
+      ],
+      "OnDelete": "SET NULL",
+      "OnUpdate": "CASCADE"
+    },
+    {
+      "Name": "fk_inventory_instance_shipment_guid",
+      "Columns": [
+        "shipment_guid"
+      ],
+      "ReferencedTable": "orders",
+      "ReferencedColumns": [
+        "guid"
+      ],
+      "OnDelete": "SET NULL",
+      "OnUpdate": "CASCADE"
+    }
+  ]
+}

@@ -1,0 +1,72 @@
+{
+  "TableName": "truck_schedule_entries",
+  "Columns": [
+    {
+      "Name": "warehouse_location_id",
+      "Type": "INT",
+      "Nullable": false
+    },
+    {
+      "Name": "destination_location_id",
+      "Type": "INT",
+      "Nullable": false
+    },
+    {
+      "Name": "departure_utc",
+      "Type": "DATETIME",
+      "Nullable": false
+    },
+    {
+      "Name": "time_zone_id",
+      "Type": "VARCHAR(64)",
+      "Nullable": false
+    },
+    {
+      "Name": "active",
+      "Type": "INT",
+      "Nullable": false
+    },
+    {
+      "Name": "notes",
+      "Type": "TEXT",
+      "Nullable": true
+    }
+  ],
+  "Indexes": [
+    {
+      "Name": "idx_truck_schedule_entries_lookup",
+      "Columns": [
+        "warehouse_location_id",
+        "destination_location_id",
+        "departure_utc"
+      ]
+    }
+  ],
+  "UniqueIndexes": [],
+  "ForeignKeys": [
+    {
+      "Name": "fk_truck_schedule_entries_warehouse_location_id",
+      "Columns": [
+        "warehouse_location_id"
+      ],
+      "ReferencedTable": "locations",
+      "ReferencedColumns": [
+        "id"
+      ],
+      "OnDelete": "RESTRICT",
+      "OnUpdate": "CASCADE"
+    },
+    {
+      "Name": "fk_truck_schedule_entries_destination_location_id",
+      "Columns": [
+        "destination_location_id"
+      ],
+      "ReferencedTable": "locations",
+      "ReferencedColumns": [
+        "id"
+      ],
+      "OnDelete": "RESTRICT",
+      "OnUpdate": "CASCADE"
+    }
+  ]
+}

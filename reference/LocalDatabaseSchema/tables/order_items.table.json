@@ -1,0 +1,70 @@
+{
+  "TableName": "order_items",
+  "Columns": [
+    {
+      "Name": "order_id",
+      "Type": "INT",
+      "Nullable": false
+    },
+    {
+      "Name": "inventory_instance_guid",
+      "Type": "CHAR(36)",
+      "Nullable": false
+    },
+    {
+      "Name": "created_at",
+      "Type": "DATETIME",
+      "Nullable": false,
+      "DefaultSql": "CURRENT_TIMESTAMP"
+    }
+  ],
+  "Indexes": [
+    {
+      "Name": "idx_order_items_order_id",
+      "Columns": [
+        "order_id"
+      ]
+    },
+    {
+      "Name": "idx_order_items_inventory_instance_guid",
+      "Columns": [
+        "inventory_instance_guid"
+      ]
+    }
+  ],
+  "UniqueIndexes": [
+    {
+      "Name": "uq_order_items_order_instance",
+      "Columns": [
+        "order_id",
+        "inventory_instance_guid"
+      ]
+    }
+  ],
+  "ForeignKeys": [
+    {
+      "Name": "fk_order_items_order_id",
+      "Columns": [
+        "order_id"
+      ],
+      "ReferencedTable": "orders",
+      "ReferencedColumns": [
+        "id"
+      ],
+      "OnDelete": "CASCADE",
+      "OnUpdate": "CASCADE"
+    },
+    {
+      "Name": "fk_order_items_inventory_instance_guid",
+      "Columns": [
+        "inventory_instance_guid"
+      ],
+      "ReferencedTable": "inventory_instance",
+      "ReferencedColumns": [
+        "guid"
+      ],
+      "OnDelete": "RESTRICT",
+      "OnUpdate": "CASCADE"
+    }
+  ]
+}

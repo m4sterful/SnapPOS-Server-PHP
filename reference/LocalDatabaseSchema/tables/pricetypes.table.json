@@ -1,0 +1,24 @@
+{
+  "tableName": "pricetypes",
+  "columns": [
+    {
+      "name": "name",
+      "type": "TEXT",
+      "nullable": true
+    },
+    {
+      "name": "description",
+      "type": "TEXT",
+      "nullable": true
+    }
+  ],
+  "indexes": [
+    {
+      "name": "idx_priceTypes_name",
+      "columns": [
+        "name"
+      ]
+    }
+  ],
+  "uniqueIndexes": []
+}
