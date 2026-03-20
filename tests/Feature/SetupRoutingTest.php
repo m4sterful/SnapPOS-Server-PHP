@@ -2,6 +2,7 @@
 
 namespace Tests\Feature;
 
+use App\Support\SchemaGeneration\DatabaseSchemaValidator;
 use App\Support\Setup\EnvironmentFileManager;
 use App\Support\Setup\InstallationStatus;
 use Mockery;
@@ -64,6 +65,40 @@ class SetupRoutingTest extends TestCase
                 'module' => 'admin',
                 'status' => 'stub',
             ]);
+    }
+
+    public function test_system_schema_validation_endpoint_returns_schema_path_details(): void
+    {
+        $status = Mockery::mock(InstallationStatus::class, [app(EnvironmentFileManager::class)]);
+        $status->shouldReceive('installed')->andReturnTrue();
+        $this->app->instance(InstallationStatus::class, $status);
+
+        $validator = Mockery::mock(DatabaseSchemaValidator::class);
+        $validator->shouldReceive('validate')->once()->andReturn([
+            'valid' => true,
+            'schema_base_path' => base_path('reference/LocalDatabaseSchema'),
+            'manifest_path' => base_path('reference/LocalDatabaseSchema/schema.json'),
+            'path_source' => 'App\\Support\\SchemaGeneration\\LocalSchemaManifest::basePath',
+            'database' => [
+                'connection' => 'sqlite',
+                'name' => database_path('database.sqlite'),
+            ],
+            'summary' => [
+                'expected_table_count' => 20,
+                'expected_seed_count' => 13,
+                'issue_count' => 0,
+            ],
+            'tables' => [],
+            'issues' => [],
+        ]);
+        $this->app->instance(DatabaseSchemaValidator::class, $validator);
+
+        $this->getJson('/api/system/schema-validation')
+            ->assertOk()
+            ->assertJsonPath('valid', true)
+            ->assertJsonPath('schema_base_path', base_path('reference/LocalDatabaseSchema'))
+            ->assertJsonPath('manifest_path', base_path('reference/LocalDatabaseSchema/schema.json'))
+            ->assertJsonPath('path_source', 'App\\Support\\SchemaGeneration\\LocalSchemaManifest::basePath');
     }
 
     public function test_system_endpoint_returns_plain_text_pong_for_get_requests(): void

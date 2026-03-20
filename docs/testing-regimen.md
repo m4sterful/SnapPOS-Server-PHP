@@ -20,7 +20,8 @@
 
 1. Request `GET /api` and confirm the API reports the installation is ready.
 2. Request `GET /api/system` and confirm the response body is exactly `pong`.
-3. Request at least one other stub endpoint such as `GET /api/admin` and confirm it still returns the JSON stub payload.
+3. Request `GET /api/system/schema-validation` and confirm the response includes `schema_base_path` and `manifest_path` values that point to the LocalDatabaseSchema source data.
+4. Request at least one other stub endpoint such as `GET /api/admin` and confirm it still returns the JSON stub payload.
 
 ## 4. Regression checks before merge
 
