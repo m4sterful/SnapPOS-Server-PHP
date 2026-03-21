@@ -38,15 +38,14 @@ return new class extends Migration
             });
 
             Schema::table('orders', function (Blueprint $table): void {
-                $table->foreign(['location_guid'], 'fk_orders_location_id')->references(['guid'])->on('locations')->onDelete('restrict')->onUpdate('cascade');
-                $table->foreign(['source_location_guid'], 'fk_orders_source_location_id')->references(['guid'])->on('locations')->onDelete('set null')->onUpdate('cascade');
-                $table->foreign(['destination_location_guid'], 'fk_orders_destination_location_id')->references(['guid'])->on('locations')->onDelete('set null')->onUpdate('cascade');
-                $table->foreign(['vendor_guid'], 'fk_orders_vendor_id')->references(['guid'])->on('vendors')->onDelete('set null')->onUpdate('cascade');
-                $table->foreign(['released_by_user_guid'], 'fk_orders_released_by_user_guid')->references(['guid'])->on('users')->onDelete('set null')->onUpdate('cascade');
+                $table->foreign(['location_guid'], 'fk_orders_location_guid')->references(['guid'])->on('locations')->onDelete('restrict')->onUpdate('cascade');
+                $table->foreign(['source_location_guid'], 'fk_orders_source_location_guid')->references(['guid'])->on('locations')->onDelete('set null')->onUpdate('cascade');
+                $table->foreign(['destination_location_guid'], 'fk_orders_destination_location_guid')->references(['guid'])->on('locations')->onDelete('set null')->onUpdate('cascade');
+                $table->foreign(['released_by_user_guid'], 'fk_orders_released_by_user_guid')->references(['guid'])->on('users')->onDelete('no action')->onUpdate('cascade');
             });
 
             Schema::table('order_items', function (Blueprint $table): void {
-                $table->foreign(['order_id'], 'fk_order_items_order_id')->references(['id'])->on('orders')->onDelete('cascade')->onUpdate('cascade');
+                $table->foreign(['order_guid'], 'fk_order_items_order_id')->references(['guid'])->on('orders')->onDelete('cascade')->onUpdate('cascade');
                 $table->foreign(['inventory_instance_guid'], 'fk_order_items_inventory_instance_guid')->references(['guid'])->on('inventory_instance')->onDelete('restrict')->onUpdate('cascade');
             });
 
@@ -73,10 +72,9 @@ return new class extends Migration
             });
 
             Schema::table('orders', function (Blueprint $table): void {
-                $table->dropForeign('fk_orders_location_id');
-                $table->dropForeign('fk_orders_source_location_id');
-                $table->dropForeign('fk_orders_destination_location_id');
-                $table->dropForeign('fk_orders_vendor_id');
+                $table->dropForeign('fk_orders_location_guid');
+                $table->dropForeign('fk_orders_source_location_guid');
+                $table->dropForeign('fk_orders_destination_location_guid');
                 $table->dropForeign('fk_orders_released_by_user_guid');
             });
 

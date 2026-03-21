@@ -101,6 +101,12 @@
       "Columns": [
         "username"
       ]
+    },
+    {
+      "Name": "uq_users_guid",
+      "Columns": [
+        "guid"
+      ]
     }
   ],
   "ForeignKeys": [

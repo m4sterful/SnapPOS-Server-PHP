@@ -1,9 +1,9 @@
-{
+﻿{
   "TableName": "order_items",
   "Columns": [
     {
-      "Name": "order_id",
-      "Type": "INT",
+      "Name": "order_guid",
+      "Type": "CHAR(36)",
       "Nullable": false
     },
     {
@@ -18,26 +18,13 @@
       "DefaultSql": "CURRENT_TIMESTAMP"
     }
   ],
-  "Indexes": [
-    {
-      "Name": "idx_order_items_order_id",
-      "Columns": [
-        "order_id"
-      ]
-    },
-    {
-      "Name": "idx_order_items_inventory_instance_guid",
-      "Columns": [
-        "inventory_instance_guid"
-      ]
-    }
-  ],
+  "Indexes": [],
   "UniqueIndexes": [
     {
       "Name": "uq_order_items_order_instance",
       "Columns": [
-        "order_id",
-        "inventory_instance_guid"
+        "inventory_instance_guid",
+        "order_guid"
       ]
     }
   ],
@@ -45,11 +32,11 @@
     {
       "Name": "fk_order_items_order_id",
       "Columns": [
-        "order_id"
+        "order_guid"
       ],
       "ReferencedTable": "orders",
       "ReferencedColumns": [
-        "id"
+        "guid"
       ],
       "OnDelete": "CASCADE",
       "OnUpdate": "CASCADE"

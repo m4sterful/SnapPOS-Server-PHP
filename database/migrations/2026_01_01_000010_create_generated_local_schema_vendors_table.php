@@ -24,6 +24,7 @@ return new class extends Migration
                 $table->integer('dropship')->nullable();
                 $table->index(['code'], 'idx_vendors_code');
                 $table->unique(['code'], 'uq_vendors_code');
+                $table->unique(['guid'], 'uq_vendor_guid');
             });
     }
 

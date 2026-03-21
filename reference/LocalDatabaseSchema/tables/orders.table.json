@@ -98,7 +98,7 @@
     },
     {
       "Name": "released_by_user_guid",
-      "Type": "INT",
+      "Type": "CHAR(36)",
       "Nullable": true
     },
     {
@@ -217,7 +217,7 @@
       "ReferencedColumns": [
         "guid"
       ],
-      "OnDelete": "SET NULL",
+      "OnDelete": "NO ACTION",
       "OnUpdate": "CASCADE"
     }
   ]

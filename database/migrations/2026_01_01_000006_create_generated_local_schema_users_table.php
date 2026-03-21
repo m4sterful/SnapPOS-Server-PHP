@@ -29,6 +29,7 @@ return new class extends Migration
                 $table->index(['location'], 'idx_users_location');
                 $table->index(['cust_guid'], 'idx_users_cust_guid');
                 $table->unique(['username'], 'uq_users_username');
+                $table->unique(['guid'], 'uq_users_guid');
             });
     }
 

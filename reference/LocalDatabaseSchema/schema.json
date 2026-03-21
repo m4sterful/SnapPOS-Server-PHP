@@ -34,7 +34,7 @@
     {
       "TableName": "users",
       "File": "tables/users.table.json",
-      "Version": 6,
+      "Version": 7,
       "VersionKeyName": "Users"
     },
     {
@@ -106,13 +106,13 @@
     {
       "TableName": "orders",
       "File": "tables/orders.table.json",
-      "Version": 8,
+      "Version": 10,
       "VersionKeyName": "Orders"
     },
     {
       "TableName": "order_items",
       "File": "tables/order_items.table.json",
-      "Version": 1,
+      "Version": 2,
       "VersionKeyName": "OrderItems"
     },
     {

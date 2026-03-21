@@ -30,7 +30,7 @@ return new class extends Migration
                 $table->date('requested_ship_date')->nullable();
                 $table->text('notes')->nullable();
                 $table->dateTime('released_at_utc')->nullable();
-                $table->integer('released_by_user_guid')->nullable();
+                $table->char('released_by_user_guid', 36)->nullable();
                 $table->string('release_mode', 32)->nullable();
                 $table->text('release_note')->nullable();
                 $table->dateTime('created_at')->useCurrent();
