@@ -199,7 +199,7 @@ class SetupRoutingTest extends TestCase
         $status->shouldReceive('installed')->andReturnTrue();
         $this->app->instance(InstallationStatus::class, $status);
 
-        $this->get('/api/system')
+        $this->get('/api/system/ping')
             ->assertOk()
             ->assertSeeText('pong')
             ->assertHeader('content-type', 'text/plain; charset=UTF-8');
@@ -211,7 +211,7 @@ class SetupRoutingTest extends TestCase
         $status->shouldReceive('installed')->andReturnTrue();
         $this->app->instance(InstallationStatus::class, $status);
 
-        $this->post('/api/system')
+        $this->post('/api/system/ping')
             ->assertOk()
             ->assertSeeText('pong')
             ->assertHeader('content-type', 'text/plain; charset=UTF-8');
