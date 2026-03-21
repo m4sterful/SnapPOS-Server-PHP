@@ -11,7 +11,7 @@ return new class extends Migration
             Schema::disableForeignKeyConstraints();
 
             Schema::table('locationlinks', function (Blueprint $table): void {
-                $table->foreign(['customer_guid'], 'fk_locationlinks_customer_guid')->references(['guid'])->on('contacts')->onDelete('cascade')->onUpdate('cascade');
+                $table->foreign(['entity_guid'], 'fk_locationlinks_customer_guid')->references(['guid'])->on('contacts')->onDelete('cascade')->onUpdate('cascade');
                 $table->foreign(['location_guid'], 'fk_locationlinks_location_guid')->references(['guid'])->on('locations')->onDelete('cascade')->onUpdate('cascade');
             });
 
@@ -38,11 +38,11 @@ return new class extends Migration
             });
 
             Schema::table('orders', function (Blueprint $table): void {
-                $table->foreign(['location_id'], 'fk_orders_location_id')->references(['id'])->on('locations')->onDelete('restrict')->onUpdate('cascade');
-                $table->foreign(['source_location_id'], 'fk_orders_source_location_id')->references(['id'])->on('locations')->onDelete('set null')->onUpdate('cascade');
-                $table->foreign(['destination_location_id'], 'fk_orders_destination_location_id')->references(['id'])->on('locations')->onDelete('set null')->onUpdate('cascade');
-                $table->foreign(['vendor_id'], 'fk_orders_vendor_id')->references(['id'])->on('vendors')->onDelete('set null')->onUpdate('cascade');
-                $table->foreign(['released_by_user_id'], 'fk_orders_released_by_user_id')->references(['id'])->on('users')->onDelete('set null')->onUpdate('cascade');
+                $table->foreign(['location_guid'], 'fk_orders_location_id')->references(['guid'])->on('locations')->onDelete('restrict')->onUpdate('cascade');
+                $table->foreign(['source_location_guid'], 'fk_orders_source_location_id')->references(['guid'])->on('locations')->onDelete('set null')->onUpdate('cascade');
+                $table->foreign(['destination_location_guid'], 'fk_orders_destination_location_id')->references(['guid'])->on('locations')->onDelete('set null')->onUpdate('cascade');
+                $table->foreign(['vendor_guid'], 'fk_orders_vendor_id')->references(['guid'])->on('vendors')->onDelete('set null')->onUpdate('cascade');
+                $table->foreign(['released_by_user_guid'], 'fk_orders_released_by_user_guid')->references(['guid'])->on('users')->onDelete('set null')->onUpdate('cascade');
             });
 
             Schema::table('order_items', function (Blueprint $table): void {
@@ -77,7 +77,7 @@ return new class extends Migration
                 $table->dropForeign('fk_orders_source_location_id');
                 $table->dropForeign('fk_orders_destination_location_id');
                 $table->dropForeign('fk_orders_vendor_id');
-                $table->dropForeign('fk_orders_released_by_user_id');
+                $table->dropForeign('fk_orders_released_by_user_guid');
             });
 
             Schema::table('stocktakesessions', function (Blueprint $table): void {

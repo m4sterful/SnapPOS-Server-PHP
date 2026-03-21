@@ -1,4 +1,4 @@
-{
+﻿{
   "TableName": "orders",
   "Columns": [
     {
@@ -12,8 +12,8 @@
       "Nullable": false
     },
     {
-      "Name": "location_id",
-      "Type": "INT",
+      "Name": "location_guid",
+      "Type": "CHAR(36)",
       "Nullable": false
     },
     {
@@ -32,8 +32,8 @@
       "Nullable": false
     },
     {
-      "Name": "source_location_id",
-      "Type": "INT",
+      "Name": "source_location_guid",
+      "Type": "CHAR(36)",
       "Nullable": true
     },
     {
@@ -42,8 +42,8 @@
       "Nullable": true
     },
     {
-      "Name": "destination_location_id",
-      "Type": "INT",
+      "Name": "destination_location_guid",
+      "Type": "CHAR(36)",
       "Nullable": true
     },
     {
@@ -52,8 +52,8 @@
       "Nullable": true
     },
     {
-      "Name": "vendor_id",
-      "Type": "INT",
+      "Name": "vendor_guid",
+      "Type": "CHAR(36)",
       "Nullable": true
     },
     {
@@ -97,7 +97,7 @@
       "Nullable": true
     },
     {
-      "Name": "released_by_user_id",
+      "Name": "released_by_user_guid",
       "Type": "INT",
       "Nullable": true
     },
@@ -129,7 +129,7 @@
     {
       "Name": "idx_orders_location_id",
       "Columns": [
-        "location_id"
+        "location_guid"
       ]
     },
     {
@@ -147,7 +147,7 @@
     {
       "Name": "idx_orders_destination_location_id",
       "Columns": [
-        "destination_location_id"
+        "destination_location_guid"
       ]
     },
     {
@@ -173,61 +173,49 @@
   ],
   "ForeignKeys": [
     {
-      "Name": "fk_orders_location_id",
+      "Name": "fk_orders_location_guid",
       "Columns": [
-        "location_id"
+        "location_guid"
       ],
       "ReferencedTable": "locations",
       "ReferencedColumns": [
-        "id"
+        "guid"
       ],
       "OnDelete": "RESTRICT",
       "OnUpdate": "CASCADE"
     },
     {
-      "Name": "fk_orders_source_location_id",
+      "Name": "fk_orders_source_location_guid",
       "Columns": [
-        "source_location_id"
+        "source_location_guid"
       ],
       "ReferencedTable": "locations",
       "ReferencedColumns": [
-        "id"
+        "guid"
       ],
       "OnDelete": "SET NULL",
       "OnUpdate": "CASCADE"
     },
     {
-      "Name": "fk_orders_destination_location_id",
+      "Name": "fk_orders_destination_location_guid",
       "Columns": [
-        "destination_location_id"
+        "destination_location_guid"
       ],
       "ReferencedTable": "locations",
       "ReferencedColumns": [
-        "id"
+        "guid"
       ],
       "OnDelete": "SET NULL",
       "OnUpdate": "CASCADE"
     },
     {
-      "Name": "fk_orders_vendor_id",
+      "Name": "fk_orders_released_by_user_guid",
       "Columns": [
-        "vendor_id"
-      ],
-      "ReferencedTable": "vendors",
-      "ReferencedColumns": [
-        "id"
-      ],
-      "OnDelete": "SET NULL",
-      "OnUpdate": "CASCADE"
-    },
-    {
-      "Name": "fk_orders_released_by_user_id",
-      "Columns": [
-        "released_by_user_id"
+        "released_by_user_guid"
       ],
       "ReferencedTable": "users",
       "ReferencedColumns": [
-        "id"
+        "guid"
       ],
       "OnDelete": "SET NULL",
       "OnUpdate": "CASCADE"

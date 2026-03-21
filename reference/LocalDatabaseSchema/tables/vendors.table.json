@@ -71,6 +71,12 @@
       "Columns": [
         "code"
       ]
+    },
+    {
+      "Name": "uq_vendor_guid",
+      "Columns": [
+        "guid"
+      ]
     }
   ],
   "ForeignKeys": []

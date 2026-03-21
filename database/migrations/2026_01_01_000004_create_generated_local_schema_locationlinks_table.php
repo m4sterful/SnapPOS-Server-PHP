@@ -11,10 +11,10 @@ return new class extends Migration
     {
             Schema::create('locationlinks', function (Blueprint $table): void {
                 $table->id();
-                $table->char('customer_guid', 36);
+                $table->char('entity_guid', 36);
                 $table->char('location_guid', 36);
-                $table->index(['customer_guid'], 'idx_locationlinks_customer_guid');
-                $table->index(['location_guid'], 'idx_locationlinks_location_guid');
+                $table->text('type');
+                $table->index(['entity_guid', 'location_guid'], 'idx_locationlinks_customer_guid');
             });
     }
 

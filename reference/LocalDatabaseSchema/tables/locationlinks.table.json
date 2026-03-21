@@ -2,7 +2,7 @@
   "TableName": "locationlinks",
   "Columns": [
     {
-      "Name": "customer_guid",
+      "Name": "entity_guid",
       "Type": "CHAR(36)",
       "Nullable": false
     },
@@ -10,18 +10,18 @@
       "Name": "location_guid",
       "Type": "CHAR(36)",
       "Nullable": false
+    },
+    {
+      "Name": "type",
+      "Type": "TEXT",
+      "Nullable": false
     }
   ],
   "Indexes": [
     {
       "Name": "idx_locationlinks_customer_guid",
       "Columns": [
-        "customer_guid"
-      ]
-    },
-    {
-      "Name": "idx_locationlinks_location_guid",
-      "Columns": [
+        "entity_guid",
         "location_guid"
       ]
     }
@@ -31,7 +31,7 @@
     {
       "Name": "fk_locationlinks_customer_guid",
       "Columns": [
-        "customer_guid"
+        "entity_guid"
       ],
       "ReferencedTable": "contacts",
       "ReferencedColumns": [

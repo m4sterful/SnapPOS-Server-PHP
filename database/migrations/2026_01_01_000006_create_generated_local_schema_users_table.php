@@ -24,6 +24,7 @@ return new class extends Migration
                 $table->dateTime('created_at')->nullable()->useCurrent();
                 $table->dateTime('last_login')->nullable()->useCurrent();
                 $table->dateTime('pwd_last_set')->nullable()->useCurrent();
+                $table->char('guid', 36)->nullable();
                 $table->index(['username'], 'idx_users_username');
                 $table->index(['location'], 'idx_users_location');
                 $table->index(['cust_guid'], 'idx_users_cust_guid');

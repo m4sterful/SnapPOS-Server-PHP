@@ -1,4 +1,4 @@
-{
+﻿{
   "SchemaFormatVersion": 1,
   "Tables": [
     {
@@ -22,7 +22,7 @@
     {
       "TableName": "locationlinks",
       "File": "tables/locationlinks.table.json",
-      "Version": 3,
+      "Version": 5,
       "VersionKeyName": "LocationLinks"
     },
     {
@@ -34,7 +34,7 @@
     {
       "TableName": "users",
       "File": "tables/users.table.json",
-      "Version": 5,
+      "Version": 6,
       "VersionKeyName": "Users"
     },
     {
@@ -58,7 +58,7 @@
     {
       "TableName": "vendors",
       "File": "tables/vendors.table.json",
-      "Version": 2,
+      "Version": 4,
       "VersionKeyName": "Vendors"
     },
     {
@@ -106,7 +106,7 @@
     {
       "TableName": "orders",
       "File": "tables/orders.table.json",
-      "Version": 2,
+      "Version": 8,
       "VersionKeyName": "Orders"
     },
     {
