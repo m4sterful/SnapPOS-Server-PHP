@@ -1,23 +1,18 @@
 <?php
 
 use App\Http\Controllers\Api\ApplicationStatusController;
-use App\Http\Controllers\Api\ModuleController;
-use App\Http\Controllers\Api\SystemSchemaValidationController;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware('setup.complete')->group(function (): void {
     Route::get('/', ApplicationStatusController::class)->name('home');
 
-    Route::get('system/schema-validation', SystemSchemaValidationController::class)
-        ->name('modules.system.schema-validation');
+    Route::name('modules.system.')
+        ->prefix('system')
+        ->group(base_path('routes/api/system.php'));
 
-    Route::any('system', ModuleController::class)
-        ->defaults('module', 'system')
-        ->name('modules.system');
-
-    foreach (['admin', 'marketing', 'purchasing', 'delivery', 'reporting', 'inventory', 'warehouse', 'operations'] as $module) {
-        Route::get($module, ModuleController::class)
-            ->defaults('module', $module)
-            ->name("modules.{$module}");
+    foreach (['admin', 'marketing', 'purchasing', 'delivery', 'reporting', 'inventory', 'warehouse', 'operations'] as $domain) {
+        Route::name("modules.{$domain}.")
+            ->prefix($domain)
+            ->group(base_path("routes/api/{$domain}.php"));
     }
 });
